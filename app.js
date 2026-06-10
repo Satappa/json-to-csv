@@ -3,6 +3,8 @@
  */
 
 // Sample Data Constants
+const SAMPLE_CSV = `id,name,department,salary,contact.email,contact.phone\n101,Alice Green,Engineering,125000,alice.g@datamorph.io,555-0192\n102,Bob Smith,Design,108000,bob.s@datamorph.io,555-0143`;
+
 const SAMPLES = {
     'json-formatter': `{\n  "projectName": "DataMorph Suite",\n  "status": "Production",\n  "version": 2.1,\n  "adFree": true,\n  "features": ["Formatter", "CSV Converter", "XML Converter", "YAML Converter", "Base64 Codec", "JWT Decoder"],\n  "statistics": {\n    "bytesUploaded": 0,\n    "privacyRating": "100%",\n    "offlineCompatible": true\n  },\n  "maintainer": null\n}`,
     
@@ -10,7 +12,7 @@ const SAMPLES = {
 
     'json-xml': `{\n  "catalog": {\n    "book": {\n      "@attributes": { "id": "bk101" },\n      "author": "Gambardella, Matthew",\n      "title": "XML Developer's Guide",\n      "genre": "Computer",\n      "price": 44.95,\n      "publish_date": "2000-10-01",\n      "description": "An in-depth look at creating applications with XML."\n    }\n  }\n}`,
 
-    'json-yaml': `project:\n  name: DataMorph Suite\n  version: 2.1.0\n  private: true\n  dependencies:\n    - js-yaml\n    - xmldom\n    - inter-font\n  license: MIT`,
+    'json-yaml': `{\n  "project": {\n    "name": "DataMorph Suite",\n    "version": "2.1.0",\n    "private": true,\n    "dependencies": [\n      "js-yaml",\n      "xmldom",\n      "inter-font"\n    ],\n    "license": "MIT"\n  }\n}`,
 
     'base64': `DataMorph Suite is a 100% secure, browser-only workspace for processing files and strings. Emojis work too! 🚀🔥`,
 
@@ -18,6 +20,7 @@ const SAMPLES = {
 
     'jwt': `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjI1MTYyMzkwMjIsImFkbWluIjp0cnVlLCJyb2xlcyI6WyJkZXZlbG9wZXIiLCJhZG1pbiJdfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`
 };
+
 
 // Application State
 let activeTool = 'json-formatter';

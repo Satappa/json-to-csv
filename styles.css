@@ -347,13 +347,27 @@ body {
     background-color: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 12px 16px;
+    padding: 8px 16px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
     box-shadow: var(--shadow);
+}
+
+.toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .direction-selector {
@@ -464,6 +478,10 @@ body {
     height: 18px;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .icon-btn.hidden {
     display: none;
 }
@@ -479,6 +497,29 @@ body {
     gap: 24px;
     box-shadow: var(--shadow);
     transition: var(--transition);
+}
+
+.control-strip .settings-panel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+.control-strip .setting-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-strip .setting-group label {
+    margin-bottom: 0;
+    white-space: nowrap;
 }
 
 .settings-panel.hidden {
@@ -580,6 +621,30 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: rgba(24, 24, 27, 0.3);
+}
+
+.panel-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.panel-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-xs {
+    padding: 4px 10px;
+    font-size: 11px;
+    border-radius: var(--radius-sm);
+    gap: 4px;
+}
+
+.btn-xs svg {
+    width: 12px;
+    height: 12px;
 }
 
 [data-theme="light"] .panel-header {
@@ -686,9 +751,16 @@ body {
 /* Right Pane Tabs */
 .tabs-container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: var(--bg-card);
     border-bottom: 1px solid var(--border);
     padding: 0 12px;
+}
+
+.tabs-left {
+    display: flex;
+    align-items: center;
 }
 
 .tab-btn {

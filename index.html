@@ -145,94 +145,78 @@
                 <div class="block-header">
                     <h2 id="tool-title-header">
                         <svg class="brand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
                         </svg>
                         JSON Formatter & Validator
                     </h2>
-                    <button id="load-sample-btn" class="btn btn-secondary" title="Load sample data">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        Load Sample
-                    </button>
                 </div>
 
-                <!-- Control Settings Bar -->
+                <!-- Sleek Integrated Toolbar -->
                 <div class="control-strip">
-                    <div class="direction-selector" id="direction-container">
-                        <!-- Convert Direction badges (shown contextually) -->
-                        <span id="convert-from-badge" class="direction-badge">JSON</span>
-                        <button id="swap-direction-btn" class="swap-btn" title="Swap conversion direction">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                            </svg>
-                        </button>
-                        <span id="convert-to-badge" class="direction-badge">JSON</span>
+                    <div class="toolbar-left">
+                        <div class="direction-selector" id="direction-container">
+                            <!-- Convert Direction badges (shown contextually) -->
+                            <span id="convert-from-badge" class="direction-badge">JSON</span>
+                            <button id="swap-direction-btn" class="swap-btn" title="Swap conversion direction">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                                </svg>
+                            </button>
+                            <span id="convert-to-badge" class="direction-badge">JSON</span>
+                        </div>
+
+                        <!-- Contextual Configuration Panels -->
+                        <div id="settings-panel" class="settings-panel">
+                            <!-- Base Settings Indent -->
+                            <div class="setting-group" id="json-indent-group">
+                                <label for="json-indent">Indentation</label>
+                                <select id="json-indent">
+                                    <option value="2">2 Spaces</option>
+                                    <option value="4">4 Spaces</option>
+                                    <option value="minify">Minified</option>
+                                </select>
+                            </div>
+
+                            <!-- CSV Delimiter option -->
+                            <div class="setting-group hidden" id="csv-delimiter-group">
+                                <label for="csv-delimiter">Delimiter</label>
+                                <select id="csv-delimiter">
+                                    <option value=",">Comma ( , )</option>
+                                    <option value=";">Semicolon ( ; )</option>
+                                    <option value="&#9;">Tab ( \t )</option>
+                                </select>
+                            </div>
+
+                            <!-- Base64/URL Encoding options -->
+                            <div class="setting-group hidden" id="codec-action-group">
+                                <label for="codec-action">Operation</label>
+                                <select id="codec-action">
+                                    <option value="encode">Encode</option>
+                                    <option value="decode">Decode</option>
+                                </select>
+                            </div>
+
+                            <!-- Checkbox Features -->
+                            <label class="setting-checkbox" id="flatten-json-checkbox-wrapper">
+                                <input type="checkbox" id="flatten-json" checked>
+                                Flatten Nested JSON
+                            </label>
+                            <label class="setting-checkbox hidden" id="unflatten-csv-checkbox-wrapper">
+                                <input type="checkbox" id="unflatten-csv">
+                                Unflatten Nested CSV keys
+                            </label>
+                            <label class="setting-checkbox hidden" id="smart-types-checkbox-wrapper">
+                                <input type="checkbox" id="smart-types" checked>
+                                Smart Type parsing
+                            </label>
+                        </div>
                     </div>
 
-                    <div class="action-buttons">
+                    <div class="toolbar-right">
                         <button id="convert-btn" class="btn btn-primary" title="Execute processing/conversion">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                             Format
                         </button>
-                        <button id="copy-btn" class="btn btn-secondary" title="Copy output code to clipboard">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
-                            Copy
-                        </button>
-                        <button id="download-btn" class="btn btn-secondary" title="Download output file">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Download
-                        </button>
-                        <button id="clear-btn" class="btn btn-secondary" title="Clear inputs and outputs">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                            Clear
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Contextual Configuration Panels -->
-                <div id="settings-panel" class="settings-panel">
-                    <!-- Base Settings Indent -->
-                    <div class="setting-group" id="json-indent-group">
-                        <label for="json-indent">JSON Indentation</label>
-                        <select id="json-indent">
-                            <option value="2">2 Spaces</option>
-                            <option value="4">4 Spaces</option>
-                            <option value="minify">Minified</option>
-                        </select>
-                    </div>
-
-                    <!-- CSV Delimiter option -->
-                    <div class="setting-group hidden" id="csv-delimiter-group">
-                        <label for="csv-delimiter">CSV Delimiter</label>
-                        <select id="csv-delimiter">
-                            <option value=",">Comma ( , )</option>
-                            <option value=";">Semicolon ( ; )</option>
-                            <option value="&#9;">Tab ( \t )</option>
-                        </select>
-                    </div>
-
-                    <!-- Base64/URL Encoding options -->
-                    <div class="setting-group hidden" id="codec-action-group">
-                        <label for="codec-action">Operation</label>
-                        <select id="codec-action">
-                            <option value="encode">Encode</option>
-                            <option value="decode">Decode</option>
-                        </select>
-                    </div>
-
-                    <!-- Checkbox Features -->
-                    <div class="setting-checkbox-list">
-                        <label class="setting-checkbox" id="flatten-json-checkbox-wrapper">
-                            <input type="checkbox" id="flatten-json" checked>
-                            Flatten Nested JSON
-                        </label>
-                        <label class="setting-checkbox hidden" id="unflatten-csv-checkbox-wrapper">
-                            <input type="checkbox" id="unflatten-csv">
-                            Unflatten Nested CSV keys
-                        </label>
-                        <label class="setting-checkbox hidden" id="smart-types-checkbox-wrapper">
-                            <input type="checkbox" id="smart-types" checked>
-                            Smart Type parsing
-                        </label>
                     </div>
                 </div>
 
@@ -241,11 +225,23 @@
                     <!-- Input Panel -->
                     <div class="panel" id="input-panel">
                         <div class="panel-header">
-                            <span class="panel-title" id="input-title">
-                                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                                INPUT (JSON)
-                            </span>
-                            <span class="panel-meta" id="input-meta">Empty</span>
+                            <div class="panel-header-left">
+                                <span class="panel-title" id="input-title">
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                    INPUT (JSON)
+                                </span>
+                                <span class="panel-meta" id="input-meta">Empty</span>
+                            </div>
+                            <div class="panel-actions">
+                                <button id="load-sample-btn" class="btn btn-secondary btn-xs" title="Load sample data">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                    Sample
+                                </button>
+                                <button id="clear-btn" class="btn btn-secondary btn-xs" title="Clear inputs and outputs">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    Clear
+                                </button>
+                            </div>
                         </div>
                         
                         <div class="editor-container">
@@ -265,34 +261,46 @@
                                 </div>
                             </div>
                         </div>
-
+ 
                         <!-- Error/Status Info bar -->
                         <div id="validation-bar" class="validation-bar success">
                             <svg class="validation-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span id="validation-message">Ready</span>
                         </div>
                     </div>
-
+ 
                     <!-- Output Panel -->
                     <div class="panel" id="output-panel">
                         <!-- Navigation Tabs (Only matching tabs are shown based on tool) -->
                         <div class="tabs-container">
-                            <button class="tab-btn active" id="tab-btn-raw" data-tab="tab-raw">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
-                                Raw Output
-                            </button>
-                            <button class="tab-btn" id="tab-btn-table" data-tab="tab-table">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                                Table Preview
-                            </button>
-                            <button class="tab-btn" id="tab-btn-tree" data-tab="tab-tree">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                                Tree View
-                            </button>
-                            <button class="tab-btn" id="tab-btn-jwt" data-tab="tab-jwt">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                                JWT Decoded
-                            </button>
+                            <div class="tabs-left">
+                                <button class="tab-btn active" id="tab-btn-raw" data-tab="tab-raw">
+                                    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+                                    Raw Output
+                                </button>
+                                <button class="tab-btn" id="tab-btn-table" data-tab="tab-table">
+                                    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                    Table Preview
+                                </button>
+                                <button class="tab-btn" id="tab-btn-tree" data-tab="tab-tree">
+                                    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                    Tree View
+                                </button>
+                                <button class="tab-btn" id="tab-btn-jwt" data-tab="tab-jwt">
+                                    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                    JWT Decoded
+                                </button>
+                            </div>
+                            <div class="panel-actions">
+                                <button id="copy-btn" class="btn btn-secondary btn-xs" title="Copy output code to clipboard">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                                    Copy
+                                </button>
+                                <button id="download-btn" class="btn btn-secondary btn-xs" title="Download output file">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    Download
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Tab 1: Code Textarea View -->
